@@ -28,7 +28,7 @@ Key problem assumptions:
 -  At optimal price, ticket_sold* = demand - price* = demand - demand/2 = demand/2.
     - This optimal price is only relevant when the number of available tickets is at least half of the demand.
     - The price should not be lower than demand - remaining number of tickets
-    - Below are the revenue function of price or tickets sold assuming demand = 150 and max tickets of 100.
+    - Below is the revenue as a function of price or tickets sold. It assumes demand = 150 and max tickets = 100. The optimum is found at 150 / 2 = 75.
     
 ![](asset/revenue_curve.png)
     
