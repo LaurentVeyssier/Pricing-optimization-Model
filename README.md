@@ -18,17 +18,19 @@ Key problem assumptions:
 
 # Initial observations
 - Since unsold tickets are lost, the algorithm must check and sell all remaining tickets the day before the last. This will be achieved by setting price = demand - tickets left. In case the demand on the day before the last is below the number of tickets left, a portion will be lost. 
+
 - Revenues = Price x Quantities sold.
   - Quantities sold = demand - price
   - `Revenues = price x (demand - price)`. Revenues are maximized when the function's derivative is 0.
   - dRevenues/dprice = demand - 2 x price so the optimal price maximizing Revenues is `price* = demand / 2`.
   - Given revenue formula, we find back that we do not generate revenues if price = 0 or if price = demand.
   
-  ![](asset/revenue_curve.png)
-  
 -  At optimal price, ticket_sold* = demand - price* = demand - demand/2 = demand/2.
     - This optimal price is only relevant when the number of available tickets is at least half of the demand.
     - The price should not be lower than demand - remaining number of tickets
+    
+![](asset/revenue_curve.png)
+    
 - Let's test different strategies:
   - If we try to sell a lot of tickets when demand is high, the outcome can be sub-optimal. Let's take a demand level of 180, close to the max 200. let's assume we have 30 tickets left. In case we are a couple of days before departure, the probability to get a higher demand level is reduced because it needs to be higher than the current demand and there are very few days (or opportunities) left. So this makes sense to try selling all remaining tickets.
     - price = demand - tickets left, ie price = 180 - 30 = 150 ===> Revenues = 150 x 30 = 4500.
@@ -37,6 +39,7 @@ Key problem assumptions:
     - we need another day with demand of 150 only to equal the first strategy: Let's sell the remaining 15 tickets with a lower demand of 150. price = 150 - 15 = 135 ==> Revenues = 135 x 15 = 2025. Total revenues = 2475 + 2025 = 4500 similar to our first strategy.
     - However we have created opportunities to outperform. If we can sell the 15 remaining tickets with any demand higher than 150 (basically 50% chance to occur) then we will gain from a higher price.
   - Conclusion => **The logic should not to sell the maximum number of tickets when demand is high but rather sell smaller amounts of tickets at a higher price with high demand, rinse and repeat until the last days before the event. This is the optimization opportunity**.
+  
 - Since the demand obeys to a uniform distribution, we can calculate a few probabilities, which will be help overall understanding later on: 
      - Probability to get a demand level D: P(D) = 1/101 (there are equals chances to take integer values from 100 to 200 included)
      - Probability that we get a demand higher than level D: P(demand > D) = (200 - D) / 101 with the demand taking all values between 100 to 200. We can check that P(demand>100) = 99%, P(demand>200) = 0 and P(demand>150) close to 50%.
