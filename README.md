@@ -54,7 +54,7 @@ Then I use a more sophisticated algorithm using brute force. The algorithm preco
 Finally I use a refined version of the brute force approach proposed [here](https://www.kaggle.com/aliaksei0/airline-price-optimization-micro-challenge) delivering a further improvement to **€7,596**. This solution uses an optimization technique called dynamic programming. Dynamic programming starts by solving an optimization problem in a very limited scenario, and then creates an iterative rule to expand to larger problem. In our case, we first solve for the optimal price when you only have 1 day to sell tickets before the flight. Then we continually step back to longer time-horizons one day at a time.
   
 # Next Steps
-Use Bellmann equation to calculate average revenues. Using this equation allows to achieve an average revenue of **€7,611** on the test dataset (see [here](https://www.kaggle.com/ivannz/airline-price-optimization-micro-challenge-d76dba/)).
+Use Bellmann equation to calculate average revenues. Using this equation allows to achieve an average revenue of **€7,611** on the test dataset (see [here](https://www.kaggle.com/ivannz/airline-price-optimization-micro-challenge-d76dba/)). Details about Bellmann equation implementation can be read [here](https://www.kaggle.com/alexishchenko/airline-price-optimization-micro-challenge).
 
 The Bellman equation shows up everywhere in the Reinforcement Learning literature, being one of the central elements of many Reinforcement Learning algorithms. In summary, we can say that the Bellman equation decomposes the value function into two parts, the immediate reward plus the discounted future values.
 
