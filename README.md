@@ -16,7 +16,7 @@ Key problem assumptions:
 - The quantity of tickets you sell on a given day is defined by the simple equation: `tickets sold = demand - price (on that day)`. So you won't sell any tickets if priced at the demand level (walk-away price limit) and you will sell all available tickets if you propose a price equals to the demand less your number of tickets (provided the demand is large enough).
 - The sale starts N days before the event with a defined number of tickets to sell. The objective is to maximize revenues generated selling the tickets.
 
-# initial observations
+# Initial observations
 - Since unsold tickets are lost, the algorithm must check and sell all remaining tickets the day before the last. This will be achieved by setting price = demand on day before the last - tickets left. In case the demand is below the number of tickets left, a portion will be lost.
 - Revenues = Price x Quantities sold.
   - Quantities sold = demand - price
@@ -33,6 +33,8 @@ Key problem assumptions:
     - we need another day with demand of 150 only to equal the first strategy: Let's sell the remaining 15 tickets with a lower demand of 150. price = 150 - 15 = 135 ==> Revenues = 135 x 15 = 2025. Total revenues = 2475 + 2025 = 4500 similar to our first strategy.
     - However we have created opportunities to outperform by selling the 15 remaining tickets at a higher price with any demand higher than 150 which basically has 50% chance to occur.
   - Conclusion => **The logic should not to sell the maximum number of tickets when demand is high but rather sell smaller amounts of tickets at a higher price with high demand and repeat until the last days before the event. This is the optimization opportunity**.
-  
+
+# Proposed approach
+
   
 
