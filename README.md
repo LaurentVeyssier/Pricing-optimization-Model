@@ -26,11 +26,12 @@ Key problem assumptions:
 -  At optimal price, ticket_sold* = demand - price* = demand - demand/2 = demand/2.
     - This optimal price is only relevant when the number of available tickets is at least half of the demand.
 - Let's test different strategies:
-  - If we try to sell a lot of tickets when demand is high, the outcome can be sub-optimal. Let's take a demand level of 180, close to the max 200. let's assume we have 30 tickets left. In case we are a couple of days before departure, the probability to get a higher demand level is reduced because it needs to be higher than the current demand and there are very few days (or opportuinities) left. So this makes sense to try selling all remaining tickets.
+  - If we try to sell a lot of tickets when demand is high, the outcome can be sub-optimal. Let's take a demand level of 180, close to the max 200. let's assume we have 30 tickets left. In case we are a couple of days before departure, the probability to get a higher demand level is reduced because it needs to be higher than the current demand and there are very few days (or opportunities) left. So this makes sense to try selling all remaining tickets.
     - price = demand - tickets left, ie price = 180 - 30 = 150 ===> Revenues = 150 x 30 = 4500.
   - However let's imagine we have many days left before the event. What should we do ? In fact, we could achieve similar revenues by fractioning the sales and create opportunities to outperform:
     - let's sell only 15 tickets when demand is 180. price is improved by 15 at 180 - 15 = 165 ==> Revenues = 165 x 15 = 2475.
     - we need another day with demand of 150 only to equal the first strategy: Let's sell the remaining 15 tickets with a lower demand of 150. price = 150 - 15 = 135 ==> Revenues = 135 x 15 = 2025. Total revenues = 2475 + 2025 = 4500 similar to our first strategy.
+    - However we have created opportunities to outperform with any demand higher than 150 which basically has 50% chance to occur.
   - Conclusion => The logic should not to sell the maximum number of tickets when demand is high but rather sell smaller amounts of tickets at a higher price with high demand and repeat until the last days before the event. This is the optimization objective.
   
   
