@@ -22,7 +22,7 @@ Key problem assumptions:
   - Quantities sold = demand - price
   - `Revenues = price x (demand - price)`. Revenues are maximized when the function's derivative is 0.
   - dRevenues/dprice = demand - 2 x price so the optimal price maximizing Revenues is `price* = demand / 2`.
-  - With above revenues formula, we find back that we do not sell tickets if price = 0 or if price = demand.
+  - Given revenue formula, we find back that we do not generate revenues if price = 0 or if price = demand.
 -  At optimal price, ticket_sold* = demand - price* = demand - demand/2 = demand/2.
     - This optimal price is only relevant when the number of available tickets is at least half of the demand.
     - The price should not be lower than demand - remaining number of tickets
