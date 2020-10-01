@@ -17,7 +17,7 @@ Key problem assumptions:
 - The sale starts N days before the event with a defined number of tickets to sell. The objective is to maximize revenues generated selling the tickets.
 
 # Initial observations
-- Since unsold tickets are lost, the algorithm must check and sell all remaining tickets the day before the last. This will be achieved by setting price = demand on day before the last - tickets left. In case the demand is below the number of tickets left, a portion will be lost.
+- Since unsold tickets are lost, the algorithm must check and sell all remaining tickets the day before the last. This will be achieved by setting price = demand - tickets left. In case the demand on the day before the last is below the number of tickets left, a portion will be lost. 
 - Revenues = Price x Quantities sold.
   - Quantities sold = demand - price
   - `Revenues = price x (demand - price)`. Revenues are maximized when the function's derivative is 0.
