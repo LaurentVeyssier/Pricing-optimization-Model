@@ -21,7 +21,7 @@ Key problem assumptions:
 
 - Revenues = Price x Quantities sold.
   - Quantities sold = demand - price
-  - `Revenues = price x (demand - price)`. Revenues are maximized when the function's derivative is 0.
+  - `Revenues = price x (demand - price)`. Similarly, `Revenues = tickets_sold x (demand - tickets_sold)`. Revenues are maximized when the function's derivative is 0.
   - dRevenues/dprice = demand - 2 x price so the optimal price maximizing Revenues is `price* = demand / 2`.
   - Given revenue formula, we find back that we do not generate revenues if price = 0 or if price = demand.
   
@@ -50,7 +50,7 @@ In the notebook, I first propose basic price calculations. These achieves increa
 
 Then I use a more sophisticated algorithm using brute force. The algorithm precomputes all possible best prices given the number of days left and the number of tickets left accross all possible demand levels. The average revenue is increased to **€7,574**, a 3% improvement over previous best result.
 
-Finally I use a refined version of the brute force approach proposed [here](https://www.kaggle.com/aliaksei0/airline-price-optimization-micro-challenge) delivering a further improvement to **€7,596**.
+Finally I use a refined version of the brute force approach proposed [here](https://www.kaggle.com/aliaksei0/airline-price-optimization-micro-challenge) delivering a further improvement to **€7,596**. This solution uses an optimization technique called dynamic programming. Dynamic programming starts by solving an optimization problem in a very limited scenario, and then creates an iterative rule to expand to larger problem. In our case, we first solve for the optimal price when you only have 1 day to sell tickets before the flight. Then we continually step back to longer time-horizons one day at a time.
   
 # Next Steps
 Use Bellmann equation to calculate average revenues. Using this equation allows to achieve an average revenue of **€7,611** on the test dataset (see [here](https://www.kaggle.com/ivannz/airline-price-optimization-micro-challenge-d76dba/)).
