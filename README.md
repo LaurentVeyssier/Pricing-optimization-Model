@@ -2,7 +2,7 @@
 Optimize revenues through pricing algorithm in python - Demand with uniform distribution
 
 # Problem statement
-This problem is inspired by a problem->solution challenge proposed at [Kaggle](https://www.kaggle.com/alexisbcook/airline-price-optimization-microchallenge).
+This problem is inspired by a micro challenge proposed at [Kaggle](https://www.kaggle.com/alexisbcook/airline-price-optimization-microchallenge).
 
 The objective is to optimize generated revenues using dynamic pricing by defining a pricing algorithm able to predict and optimize daily prices in response to a changing daily demand. Think about a transportation, hospitality or entertainment industry selling a fixed amount of tickets for a defined event, flight or time-bound service. 
 
@@ -23,7 +23,7 @@ Key problem assumptions:
   - Revenues = price x (demand - price). Revenues are maximized when the function's derivative is 0.
   - dRevenues/dprice = demand - 2 x price so the optimal price maximizing Revenues is `price* = demand / 2`.
 - With above revenues formula, we find back that we do not sell tickets if price = 0 or if price = demand.
--  At optimal price, ticket_sold* = demand - price* = demand - demand/2 = demand/2
+-  At optimal price, ticket_sold* = demand - price* = demand - demand/2 = demand/2.
   - This optimal price is only relevant when the number of available tickets is at least half of the demand.
 - Let's test different strategies:
   - If we try to sell a lot of tickets when demand is high, the outcome can be sub-optimal. Let's take a demand level of 180, close to the max 200. let's assume we have 30 tickets left. In case we are a couple of days before departure, the probability to get a higher demand level is reduced because it needs to be higher than the current demand and there are very few days (or opportuinities) left. So this makes sense to try selling all remaining tickets.
