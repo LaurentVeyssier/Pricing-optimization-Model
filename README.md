@@ -25,6 +25,7 @@ Key problem assumptions:
   - With above revenues formula, we find back that we do not sell tickets if price = 0 or if price = demand.
 -  At optimal price, ticket_sold* = demand - price* = demand - demand/2 = demand/2.
     - This optimal price is only relevant when the number of available tickets is at least half of the demand.
+    - The price should not be lower than demand - remaining number of tickets
 - Let's test different strategies:
   - If we try to sell a lot of tickets when demand is high, the outcome can be sub-optimal. Let's take a demand level of 180, close to the max 200. let's assume we have 30 tickets left. In case we are a couple of days before departure, the probability to get a higher demand level is reduced because it needs to be higher than the current demand and there are very few days (or opportunities) left. So this makes sense to try selling all remaining tickets.
     - price = demand - tickets left, ie price = 180 - 30 = 150 ===> Revenues = 150 x 30 = 4500.
@@ -33,8 +34,16 @@ Key problem assumptions:
     - we need another day with demand of 150 only to equal the first strategy: Let's sell the remaining 15 tickets with a lower demand of 150. price = 150 - 15 = 135 ==> Revenues = 135 x 15 = 2025. Total revenues = 2475 + 2025 = 4500 similar to our first strategy.
     - However we have created opportunities to outperform by selling the 15 remaining tickets at a higher price with any demand higher than 150 which basically has 50% chance to occur.
   - Conclusion => **The logic should not to sell the maximum number of tickets when demand is high but rather sell smaller amounts of tickets at a higher price with high demand and repeat until the last days before the event. This is the optimization opportunity**.
+- Since the demand obeys to a uniform distribution, we can calaculate a few probabilities: 
+     - probability to get a demand level D: P(D) = 1/101 (there are equals chances to take integer values from 100 to 200 included)
+     - probability that we get a demand higher than a certain level D: P(demand > D) = (200 - D) / 101 with the demand taking values in the range 100 to 200. We can check that P(demand>100) = 99%, P(demand>200) = 0 and P(demand>150) close to 50%.
+     - Demand Expectation E(demand) = sum(p(d) x d with d within 100-200) = 1/101 * sum(d with d within 100-200) = 1/101 * 101 x 300 / 2 = 150
 
 # Proposed approach
+In the notebook, I first propose basic price calculations delivering increasing results as we segment to increase opportunities to outperform. The best approach delivers €7,348 per event on average on the test dataset. 
 
+Then I use a more sophisticated algorithm using brute force optimizing the calculation. The algorithm precomputes all possible best prices given the number of days left and the number of tickets left accross all possible demand levels. The average revenue is increased to €7,574, a 3% improvement over previous best result.
+
+Finally I use a refined version of the brute force approach proposed [here](https://www.kaggle.com/aliaksei0/airline-price-optimization-micro-challenge) delivering a further improvement €7,596.
   
 
